@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio — Hanna Samborska</title>
+</head>
+<body>
+
+  <!-- ── Header (rendered by nav.js) ── -->
+  <header id="site-header"></header>
+
+  <!-- ── Views ── -->
+  <div class="view active" id="view-portfolio"></div>
+  <div class="view"        id="view-about"></div>
+
+  <!-- ── Drag preview (used by record.js) ── -->
+  <div id="drag-preview">
+    <div class="sleeve-prev" id="prev-sleeve">
+      <span class="sleeve-label" id="prev-label"></span>
+      <canvas class="vinyl-prev" id="prev-vinyl" width="84" height="84"></canvas>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

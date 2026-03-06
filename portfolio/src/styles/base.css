@@ -1,0 +1,83 @@
+:root {
+    /* ── Palette ── */
+    --bg:          #1a1510;
+    --shelf-wood:  #2d2218;
+    --shelf-edge:  #3d3020;
+    --shelf-face:  #261c12;
+    --cream:       #f2ead8;
+    --muted:       #8a7d6a;
+    --accent:      #c8a96e;
+  
+    /* ── Typography ── */
+    @font-face {
+        font-family: "DM Serif Display";
+        font-style: italic;
+        font-weight: 400;
+        src: url("/fonts/dm-serif-display-v17-latin-italic.woff2") format("woff2");
+    }
+
+    @font-face {
+        font-family: "DM Serif Display";
+        font-style: normal;
+        font-weight: 400;
+        src: url("/fonts/dm-serif-display-v17-latin-regular.woff2") format("woff2");
+    }
+
+    @font-face {
+        font-family: "DM Mono";
+        font-style: normal;
+        font-weight: 400;
+        src: url("/fonts/dm-mono-v16-latin-regular.woff2") format("woff2");
+    }
+
+    @font-face {
+        font-family: "DM Mono";
+        font-style: normal;
+        font-weight: 500;
+        src: url("/fonts/dm-mono-v16-latin-500.woff2") format("woff2");
+    }
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; }
+
+body {
+    background:   var(--bg);
+    font-family:  var(--font-mono);
+    color:        var(--cream);
+    overflow-x:   hidden;
+}
+
+/* Film grain overlay */
+body::before {
+    content: ''; position: fixed; inset: 0; z-index: 999; pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+    opacity: 0.35;
+}
+
+/* ── Views (page-switching) ── */
+.view {
+    display: none;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.4s, transform 0.4s;
+}
+.view.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ── Shared hint text ── */
+.hint {
+    text-align: center;
+    margin-top: 22px;
+    font-size: .58rem;
+    color: #4a4030;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
