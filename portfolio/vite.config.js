@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite'
 
 export default defineConfig({
-  base: '/portfolio-HannaS/',
+  base: './', // Use a relative path for local development
 })
