@@ -1,142 +1,158 @@
 /* ── Turntable section layout ── */
 .tt-section {
-    display: flex;
-    gap: 48px;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 48px;
-  }
-  
-  /* ── The physical unit ── */
-  .turntable {
-    width: 360px; height: 360px;
-    background: #0e0e0e;
-    border-radius: 14px;
-    position: relative;
-    box-shadow:
-      0 2px 0 #111 inset,
-      0 0 0 1px #2c2c2c,
-      0 24px 64px rgba(0,0,0,.7);
-    flex-shrink: 0;
-  }
-  
-  /* Corner screws */
-  .turntable::before, .turntable::after {
-    content: ''; position: absolute;
-    width: 8px; height: 8px; border-radius: 50%;
-    background: #1e1e1e;
-    box-shadow: inset 0 1px 2px rgba(0,0,0,.8), 0 0 0 1px #333;
-  }
-  .turntable::before { top: 12px; left: 12px; }
-  .turntable::after  { top: 12px; right: 12px; }
-  .screw3 { bottom: 12px; left: 12px; }
-  .screw4 { bottom: 12px; right: 12px; }
-  .screw3, .screw4 {
-    position: absolute; width: 8px; height: 8px; border-radius: 50%;
-    background: #1e1e1e;
-    box-shadow: inset 0 1px 2px rgba(0,0,0,.8), 0 0 0 1px #333;
-  }
-  
-  /* Platter */
-  .platter-wrap {
-    position: absolute; top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 248px; height: 248px;
-  }
-  .platter-ring {
-    position: absolute; inset: 0; border-radius: 50%;
-    background: conic-gradient(#1f1f1f, #2e2e2e, #1a1a1a, #2e2e2e, #1f1f1f);
-    box-shadow: 0 0 0 2px #3a3a3a, inset 0 2px 6px rgba(0,0,0,.7), 0 6px 24px rgba(0,0,0,.5);
-  }
-  .platter-mat {
-    position: absolute; inset: 8px; border-radius: 50%;
-    background: radial-gradient(circle at 40% 35%, #2a2a2a, #111);
-  }
-  
-  /* Drop zone */
-  .drop-zone {
-    position: absolute; top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 248px; height: 248px; border-radius: 50%;
-    z-index: 12;
-    display: flex; align-items: center; justify-content: center;
-    transition: background .2s;
-  }
-  .drop-zone.over { background: rgba(255,220,120,.04); }
-  .drop-label {
-    font-size: .56rem; letter-spacing: .14em; text-transform: uppercase;
-    color: #3a3228; text-align: center; line-height: 1.8;
-    pointer-events: none; transition: opacity .4s;
-  }
-  
-  /* Spinning vinyl */
-  .vinyl-on-platter {
-    position: absolute; top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 232px; height: 232px; border-radius: 50%;
-    z-index: 6; display: none; pointer-events: none;
-  }
-  .vinyl-on-platter canvas { width: 232px; height: 232px; border-radius: 50%; }
-  .vinyl-on-platter.playing { display: block; }
-  .vinyl-on-platter.playing canvas { animation: spin 2.2s linear infinite; }
-  
-  /* Spindle */
-  .spindle {
-    position: absolute; top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 12px; height: 12px; border-radius: 50%;
-    background: radial-gradient(circle at 35% 30%, #ccc, #666);
-    z-index: 16;
-    box-shadow: 0 1px 3px rgba(0,0,0,.7);
-  }
-  
-  /* Tonearm */
-  .tonearm-wrap {
-    position: absolute; top: 22px; right: 20px;
-    width: 110px; height: 110px; z-index: 20;
-  }
-  .tonearm {
-    width: 100%; height: 100%;
-    transform-origin: 71% 12%;
-    transform: rotate(-24deg);
-    transition: transform 1s cubic-bezier(.3,0,.2,1);
-    filter: drop-shadow(0 4px 8px rgba(0,0,0,.6));
-  }
-  .tonearm.playing { transform: rotate(12deg); }
-  
-  /* ── Info panel ── */
-  .info-panel {
-    width: 260px;
-    opacity: 0; transform: translateY(8px);
-    transition: opacity .6s .2s, transform .6s .2s;
-    pointer-events: none;
-  }
-  .info-panel.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
-  
-  .info-num {
-    font-size: .56rem; letter-spacing: .2em; text-transform: uppercase;
-    color: var(--muted); margin-bottom: 10px;
-  }
-  .info-panel h2 {
-    font-family: var(--font-display); font-size: 2.1rem; font-style: italic;
-    line-height: 1.1; margin-bottom: 6px;
-  }
-  .info-sub {
-    font-size: .6rem; letter-spacing: .1em; text-transform: uppercase;
-    color: var(--muted); margin-bottom: 16px;
-  }
-  .info-desc {
-    font-size: .76rem; color: #b0a490; line-height: 1.75; margin-bottom: 20px;
-  }
-  .info-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px; }
-  .info-tag {
-    font-size: .56rem; letter-spacing: .08em; text-transform: uppercase;
-    padding: 3px 10px; border: 1px solid #3a3020; border-radius: 2px; color: #8a7050;
-  }
-  .info-btn {
-    display: inline-block; font-size: .58rem; letter-spacing: .16em; text-transform: uppercase;
-    padding: 10px 22px; border: 1px solid var(--cream); color: var(--cream);
-    text-decoration: none; transition: background .2s, color .2s; border-radius: 2px;
-  }
-  .info-btn:hover { background: var(--cream); color: var(--bg); }
+  display: flex;
+  gap: 56px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+/* ── The physical unit ── */
+.turntable {
+  width: 360px; height: 360px;
+  background: radial-gradient(circle at 20% 0%, #262628 0, #111111 42%, #050506 100%);
+  border-radius: 18px;
+  position: relative;
+  box-shadow:
+    0 2px 0 rgba(0,0,0,.9) inset,
+    0 0 0 1px #303030,
+    0 24px 72px rgba(0,0,0,.85);
+  flex-shrink: 0;
+}
+
+/* Corner screws */
+.turntable::before, .turntable::after {
+  content: ''; position: absolute;
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #1e1e1e;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.8), 0 0 0 1px #333;
+}
+.turntable::before { top: 12px; left: 12px; }
+.turntable::after  { top: 12px; right: 12px; }
+.screw3 { bottom: 12px; left: 12px; }
+.screw4 { bottom: 12px; right: 12px; }
+.screw3, .screw4 {
+  position: absolute; width: 8px; height: 8px; border-radius: 50%;
+  background: #1e1e1e;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.8), 0 0 0 1px #333;
+}
+
+/* Platter */
+.platter-wrap {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 248px; height: 248px;
+}
+.platter-ring {
+  position: absolute; inset: 0; border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 15%, rgba(255,255,255,.15), transparent 60%),
+    conic-gradient(#202124, #393b3e, #18191b, #3a3c40, #202124);
+  box-shadow:
+    0 0 0 2px #3a3a3a,
+    inset 0 2px 7px rgba(0,0,0,.85),
+    0 6px 26px rgba(0,0,0,.6);
+}
+.platter-mat {
+  position: absolute; inset: 8px; border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, #2b2b2b, #060606);
+}
+
+/* Drop zone */
+.drop-zone {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 248px; height: 248px; border-radius: 50%;
+  z-index: 12;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .2s, box-shadow .2s, transform .2s;
+}
+.drop-zone.over {
+  background: radial-gradient(circle at 20% 0%, rgba(255,255,255,.08), transparent 70%);
+  box-shadow: 0 0 0 1px rgba(255,220,160,.1), 0 0 26px rgba(255,220,160,.13);
+  transform: translate(-50%, -50%) scale(1.02);
+}
+.drop-label {
+  font-size: .56rem; letter-spacing: .14em; text-transform: uppercase;
+  color: #3a3228; text-align: center; line-height: 1.8;
+  pointer-events: none; transition: opacity .4s;
+}
+
+/* Spinning vinyl */
+.vinyl-on-platter {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 232px; height: 232px; border-radius: 50%;
+  z-index: 6; display: none; pointer-events: none;
+  opacity: 0;
+  transform-origin: 50% 50%;
+  transition: opacity .45s ease, transform .45s ease;
+}
+.vinyl-on-platter canvas { width: 232px; height: 232px; border-radius: 50%; }
+.vinyl-on-platter.playing {
+  display: block;
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+.vinyl-on-platter.playing canvas { animation: spin 2.4s linear infinite; }
+
+/* Spindle */
+.spindle {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px; height: 12px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ccc, #666);
+  z-index: 16;
+  box-shadow: 0 1px 3px rgba(0,0,0,.7);
+}
+
+/* Tonearm */
+.tonearm-wrap {
+  position: absolute; top: 22px; right: 20px;
+  width: 110px; height: 110px; z-index: 20;
+}
+.tonearm {
+  width: 100%; height: 100%;
+  transform-origin: 74% 14%;
+  transform: rotate(-30deg);
+  transition: transform .85s cubic-bezier(.28,.8,.3,1.05);
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,.7));
+}
+.tonearm.playing { transform: rotate(12deg); }
+
+/* ── Info panel ── */
+.info-panel {
+  width: 260px;
+  opacity: 0; transform: translateY(8px);
+  transition: opacity .6s .2s, transform .6s .2s;
+  pointer-events: none;
+}
+.info-panel.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+
+.info-num {
+  font-size: .56rem; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 10px;
+}
+.info-panel h2 {
+  font-family: var(--font-display); font-size: 2.1rem; font-style: italic;
+  line-height: 1.1; margin-bottom: 6px;
+}
+.info-sub {
+  font-size: .6rem; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 16px;
+}
+.info-desc {
+  font-size: .76rem; color: #b0a490; line-height: 1.75; margin-bottom: 20px;
+}
+.info-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px; }
+.info-tag {
+  font-size: .56rem; letter-spacing: .08em; text-transform: uppercase;
+  padding: 3px 10px; border: 1px solid #3a3020; border-radius: 2px; color: #8a7050;
+}
+.info-btn {
+  display: inline-block; font-size: .58rem; letter-spacing: .16em; text-transform: uppercase;
+  padding: 10px 22px; border: 1px solid var(--cream); color: var(--cream);
+  text-decoration: none; transition: background .2s, color .2s; border-radius: 2px;
+}
+.info-btn:hover { background: var(--cream); color: var(--bg); }

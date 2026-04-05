@@ -63,7 +63,9 @@ export function initShelf() {
     // ── Title strip ──
     const title = document.createElement('div')
     title.className   = 'rec-title'
+    title.dataset.id  = p.id
     title.textContent = p.title
+    title.addEventListener('click', () => loadProject(p.id))
     titlesEl.appendChild(title)
 
     // ── Pointer drag events ──
@@ -82,8 +84,6 @@ function attachDragEvents(slot) {
 
 function onDown(e) {
   const slot = e.currentTarget
-  if (slot.classList.contains('used')) return
-
   e.preventDefault()
   slot.setPointerCapture(e.pointerId)
 
