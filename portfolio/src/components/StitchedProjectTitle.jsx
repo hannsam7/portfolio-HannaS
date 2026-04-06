@@ -1,4 +1,5 @@
 import { motion, useReducedMotion } from 'framer-motion'
+import { useFabricScrollTension } from '../hooks/useFabricScrollTension'
 
 const container = {
   hidden: {},
@@ -35,6 +36,7 @@ const letterMotion = {
 export function StitchedProjectTitle({ title, onClick, className }) {
   const chars = [...title]
   const reduceMotion = useReducedMotion()
+  const fabricTension = useFabricScrollTension()
 
   if (reduceMotion) {
     return (
@@ -60,7 +62,15 @@ export function StitchedProjectTitle({ title, onClick, className }) {
       whileInView="visible"
       viewport={{ once: true, amount: 0.45, margin: '0% 0% -12% 0%' }}
       variants={container}
-      className={className}
+      className={`${className} origin-left`}
+      style={
+        fabricTension.active
+          ? {
+              scaleY: fabricTension.scaleY,
+              skewY: fabricTension.skewY,
+            }
+          : undefined
+      }
     >
       {chars.map((char, i) => (
         <motion.span

@@ -137,6 +137,112 @@ html.cursor-thread-active body {
   }
 }
 
+/* Interactive frayed fabric edges (FrayedEdgeFrame.jsx) */
+.fray-frame {
+  isolation: isolate;
+}
+
+.fray-jagged-ring {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  border-radius: 1px;
+  opacity: 0.38;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 3px,
+      rgba(255, 255, 255, 0.08) 3px 4px,
+      transparent 4px 9px,
+      rgba(255, 255, 255, 0.04) 9px 10px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 3px,
+      rgba(255, 255, 255, 0.07) 3px 4px,
+      transparent 4px 8px,
+      rgba(255, 255, 255, 0.05) 8px 9px
+    );
+  background-size:
+    100% 5px,
+    5px 100%;
+  background-position:
+    0 0,
+    0 0;
+  background-repeat: repeat-x, repeat-y;
+  mix-blend-mode: screen;
+}
+
+.fray-thread-wrap {
+  position: absolute;
+  z-index: 2;
+}
+
+.fray-thread-wrap--top {
+  top: 0;
+  left: var(--fray-off);
+  width: var(--fray-w);
+  height: var(--fray-len);
+  transform: translate(-50%, -100%);
+  transform-origin: bottom center;
+}
+
+.fray-thread-wrap--bottom {
+  bottom: 0;
+  left: var(--fray-off);
+  width: var(--fray-w);
+  height: var(--fray-len);
+  transform: translate(-50%, 100%);
+  transform-origin: top center;
+}
+
+.fray-thread-wrap--left {
+  left: 0;
+  top: var(--fray-off);
+  width: var(--fray-len);
+  height: var(--fray-w);
+  transform: translate(-100%, -50%);
+  transform-origin: right center;
+}
+
+.fray-thread-wrap--right {
+  right: 0;
+  top: var(--fray-off);
+  width: var(--fray-len);
+  height: var(--fray-w);
+  transform: translate(100%, -50%);
+  transform-origin: left center;
+}
+
+.fray-thread-arm {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.5px;
+  animation: fray-sway 9.5s ease-in-out infinite;
+  animation-delay: var(--sway-delay, 0s);
+  will-change: transform;
+}
+
+@keyframes fray-sway {
+  0%,
+  100% {
+    transform: rotate(calc(var(--bend-r, 0deg) + -0.85deg)) skewX(var(--bend-sk, 0deg));
+  }
+  50% {
+    transform: rotate(calc(var(--bend-r, 0deg) + 0.85deg)) skewX(var(--bend-sk, 0deg));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fray-thread-arm {
+    animation: none;
+    transform: rotate(var(--bend-r, 0deg)) skewX(var(--bend-sk, 0deg));
+  }
+}
+
 .hand-tag-label {
   padding: 0.35rem 0.65rem;
   border: 1px solid rgba(255, 255, 255, 0.14);
