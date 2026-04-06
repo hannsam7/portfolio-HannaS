@@ -42,9 +42,54 @@ html.cursor-thread-active body {
   animation: needle-tip-pulse 0.38s ease-out;
 }
 
+/* Needle depth: pierced (idle) vs pull-out recoil */
+.needle-sunk {
+  transform: translateY(3px);
+  transition: transform 0.22s ease-out;
+  transform-origin: 0 0;
+}
+
+@keyframes needle-recoil {
+  0% {
+    transform: translateY(3px) rotate(-2.2deg);
+  }
+  38% {
+    transform: translateY(-3px) rotate(1.45deg);
+  }
+  66% {
+    transform: translateY(2px) rotate(-0.85deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+.needle-recoil {
+  animation: needle-recoil 0.45s cubic-bezier(0.33, 1.12, 0.45, 1) forwards;
+  transform-origin: 0 0;
+}
+
+@keyframes needle-recoil-quick {
+  from {
+    transform: translateY(3px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.needle-recoil-reduced {
+  animation: needle-recoil-quick 0.2s ease-out forwards;
+  transform-origin: 0 0;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .needle-tip-pulse {
     animation: none;
+  }
+
+  .needle-sunk {
+    transition: transform 0.15s ease-out;
   }
 }
 
