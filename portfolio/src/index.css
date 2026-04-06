@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Self-hosted display font (bundled by Vite; works with base: './' on GitHub Pages). */
+@font-face {
+  font-family: 'Home Sweet Home';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./assets/fonts/home-sweet-home.otf') format('opentype');
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-ink text-thread font-sans antialiased;
+}
+
+/* Focus visible for keyboard users */
+button:focus-visible,
+a:focus-visible {
+  @apply outline outline-2 outline-offset-4 outline-white;
+}
