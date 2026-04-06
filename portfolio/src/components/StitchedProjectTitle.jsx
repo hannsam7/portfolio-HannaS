@@ -38,7 +38,13 @@ export function StitchedProjectTitle({ title, onClick, className }) {
 
   if (reduceMotion) {
     return (
-      <button type="button" onClick={onClick} className={className} aria-label={title}>
+      <button
+        type="button"
+        onClick={onClick}
+        className={className}
+        aria-label={title}
+        data-thread-interactive
+      >
         {title}
       </button>
     )
@@ -49,6 +55,7 @@ export function StitchedProjectTitle({ title, onClick, className }) {
       type="button"
       onClick={onClick}
       aria-label={title}
+      data-thread-interactive
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.45, margin: '0% 0% -12% 0%' }}

@@ -4,6 +4,7 @@ import { heroAbout, projectData } from './data/projectData'
 import { ProjectModal } from './components/ProjectModal'
 import { StitchedProjectTitle } from './components/StitchedProjectTitle'
 import { MessyBacksideFooter } from './components/MessyBacksideFooter'
+import { NeedleThreadCursor } from './components/NeedleThreadCursor'
 
 const sectionReveal = {
   initial: { opacity: 0, y: 28 },
@@ -19,6 +20,7 @@ export default function App() {
   return (
     <div className="relative min-h-screen bg-ink text-thread">
       <div className="pointer-events-none fixed inset-0 z-[1] aida-grid" aria-hidden />
+      <NeedleThreadCursor />
       <div className="relative z-10">
         <section
           className="flex min-h-screen flex-col items-center justify-center px-6 py-16 text-center"

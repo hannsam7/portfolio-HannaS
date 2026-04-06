@@ -19,6 +19,35 @@ body {
   @apply bg-ink text-thread font-sans antialiased;
 }
 
+/* Custom needle + thread cursor (see NeedleThreadCursor.jsx; disabled when prefers-reduced-motion) */
+html.cursor-thread-active,
+html.cursor-thread-active body {
+  cursor: none !important;
+}
+
+@keyframes needle-tip-pulse {
+  0% {
+    transform: scale(1);
+  }
+  35% {
+    transform: scale(1.22);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.needle-tip-pulse {
+  transform-origin: 0 0;
+  animation: needle-tip-pulse 0.38s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .needle-tip-pulse {
+    animation: none;
+  }
+}
+
 /* Aida cloth: 10px grid, 5% white thread lines */
 .aida-grid {
   background-image:
