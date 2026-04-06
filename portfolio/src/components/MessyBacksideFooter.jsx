@@ -1,5 +1,6 @@
 import { useMemo } from 'react'
 import { footerContact } from '../data/projectData'
+import { BrandLabelFooter } from './BrandLabelFooter'
 
 /** Deterministic “frayed fabric” edge — full width, jagged lower silhouette. */
 function FrayedFabricEdge() {
@@ -148,6 +149,10 @@ export function MessyBacksideFooter() {
             ))}
           </ul>
         </nav>
+      </div>
+
+      <div className="mt-16 flex justify-start pb-2 pt-10">
+        <BrandLabelFooter />
       </div>
     </footer>
   )
