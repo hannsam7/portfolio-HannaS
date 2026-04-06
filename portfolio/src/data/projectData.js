@@ -6,6 +6,8 @@
  * - `video`: `{ src: '/videos/clip.mp4', poster: '/images/poster.jpg' }` or `null`
  *
  * Links with empty `href` or `href: '#'` are hidden until you set real URLs.
+ *
+ * Footer: see `footerContact` for mirrored-name block + contact links.
  */
 
 export const heroAbout =
@@ -107,3 +109,13 @@ export const projectData = [
     },
   },
 ]
+
+/** Footer contact — edit labels and URLs here. */
+export const footerContact = {
+  displayName: 'Hanna Samborska',
+  email: 'hello@example.com',
+  socials: [
+    { label: 'GitHub', href: 'https://github.com/hannasamborska' },
+    { label: 'LinkedIn', href: 'https://linkedin.com/in/hannasamborska' },
+  ],
+}

@@ -19,6 +19,104 @@ body {
   @apply bg-ink text-thread font-sans antialiased;
 }
 
+/* Aida cloth: 10px grid, 5% white thread lines */
+.aida-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 10px 10px;
+  background-position: 0 0;
+}
+
+/* Subtle CRT scanlines (use with fixed inset-0 in markup; ::after is positioned to that box) */
+.crt-overlay {
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 3px,
+    rgba(255, 255, 255, 0.04) 3px,
+    rgba(255, 255, 255, 0.04) 4px
+  );
+  opacity: 0.35;
+}
+
+.crt-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 2px,
+    rgba(0, 0, 0, 0.18) 2px,
+    rgba(0, 0, 0, 0.18) 3px
+  );
+  opacity: 0.4;
+  animation: crt-scan-drift 14s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes crt-scan-drift {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(5px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .crt-overlay::after {
+    animation: none;
+  }
+}
+
+/* Messy backside footer: thread hover wiggle (desktop) */
+.thread-path {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@media (min-width: 768px) {
+  .messy-footer-svg .thread-path:hover {
+    animation: thread-wiggle 0.42s ease-in-out infinite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .messy-footer-svg .thread-path:hover {
+    animation: none;
+  }
+}
+
+@keyframes thread-wiggle {
+  0%,
+  100% {
+    transform: translate(0, 0) skewX(0deg);
+  }
+  20% {
+    transform: translate(0.6px, -1px) skewX(1.2deg);
+  }
+  40% {
+    transform: translate(-0.8px, 0.5px) skewX(-0.9deg);
+  }
+  60% {
+    transform: translate(0.4px, 0.8px) skewX(0.6deg);
+  }
+  80% {
+    transform: translate(-0.3px, -0.4px) skewX(-0.4deg);
+  }
+}
+
+.hand-tag-label {
+  padding: 0.35rem 0.65rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.35);
+  letter-spacing: 0.08em;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06) inset;
+}
+
 /* Focus visible for keyboard users */
 button:focus-visible,
 a:focus-visible {
