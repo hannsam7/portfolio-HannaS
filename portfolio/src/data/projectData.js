@@ -9,7 +9,7 @@
 
 /** About section on the hero — one string per paragraph. */
 export const heroAbout = [
-  "I'm Hanna — full stack developer, 22, originally from Poland and now calling Norway home. I got into tech because I wanted to build things that actually matter. My bachelor's thesis is a real-time dashboard for emergency medical dispatchers, which says a lot about the kind of work that gets me out of bed.",
+  "I'm a full stack developer, originally from Poland and now calling Norway home. I got into tech because I wanted to build things that actually matter. My bachelor's thesis is a real-time dashboard for emergency medical dispatchers, which says a lot about the kind of work that gets me out of bed.",
   "I'm drawn to systems where the stakes are real and the users aren't just \"users\" — they're people depending on the product to do its job.",
 ]
 

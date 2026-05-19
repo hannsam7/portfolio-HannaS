@@ -94,20 +94,47 @@ Update `footerContact.email` and `socials` in the same file. The footer shows a 
 
 ## Deploy to GitHub Pages
 
-1. In `portfolio/vite.config.js`, set `base` to your repo path if needed:
-   ```js
-   base: '/portfolio-HannaS/'   // or './' for user/org root sites
-   ```
-   Current default: `base: './'` (works for many `gh-pages` setups).
+**Live domain:** [https://hannasamborska.no](https://hannasamborska.no)
 
-2. From `portfolio/`:
-   ```bash
-   npm run deploy
-   ```
+From `portfolio/`:
 
-3. On GitHub: **Settings → Pages →** source branch **`gh-pages`**, folder **`/` (root)**.
+```bash
+npm run deploy
+```
 
-Site URL (example): `https://<username>.github.io/portfolio-HannaS/`
+This builds the site and pushes `dist/` to the **`gh-pages`** branch.
+
+### GitHub repository settings
+
+1. Open [github.com/hannsam7/portfolio-HannaS/settings/pages](https://github.com/hannsam7/portfolio-HannaS/settings/pages)
+2. **Build and deployment → Source:** Deploy from branch **`gh-pages`** / **`/` (root)**
+3. **Custom domain:** enter `hannasamborska.no` and save
+4. When DNS has propagated, enable **Enforce HTTPS**
+
+The file `portfolio/public/CNAME` tells GitHub Pages which domain to use (copied into each build).
+
+### DNS at your domain registrar (hannasamborska.no)
+
+Add these records where you manage the domain (e.g. Domeneshop, Cloudflare, One.com):
+
+| Type | Host / name | Value |
+|------|-------------|--------|
+| **A** | `@` (apex / root) | `185.199.108.153` |
+| **A** | `@` | `185.199.109.153` |
+| **A** | `@` | `185.199.110.153` |
+| **A** | `@` | `185.199.111.153` |
+| **CNAME** | `www` | `hannsam7.github.io` |
+
+Optional IPv6 (AAAA) for `@`:
+
+- `2606:50c0:8000::153`
+- `2606:50c0:8001::153`
+- `2606:50c0:8002::153`
+- `2606:50c0:8003::153`
+
+DNS can take from a few minutes up to 48 hours. GitHub will show **DNS check successful** on the Pages settings page when it works.
+
+**Tip:** If you use Cloudflare, set SSL mode to **Full** (not “Flexible”) once HTTPS is enabled on GitHub.
 
 ---
 
