@@ -1,3 +1,7 @@
+/**
+ * Small fabric label in the footer corner — sine-wave overlock border,
+ * noise texture, and spring hover tilt (respects reduced motion).
+ */
 import { useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 

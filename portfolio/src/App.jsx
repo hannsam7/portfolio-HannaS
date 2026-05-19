@@ -1,3 +1,7 @@
+/**
+ * Root layout: hero (about), project list, footer, and full-screen project modal.
+ * Content is driven by `src/data/projectData.js`.
+ */
 import { useState, useCallback } from 'react'
 import { motion } from 'framer-motion'
 import { heroAbout, projectData, projectsIntro } from './data/projectData'
@@ -6,6 +10,7 @@ import { StitchedProjectTitle } from './components/StitchedProjectTitle'
 import { MessyBacksideFooter } from './components/MessyBacksideFooter'
 import { NeedleThreadCursor } from './components/NeedleThreadCursor'
 
+/** Shared scroll-into-view animation for sections below the fold. */
 const sectionReveal = {
   initial: { opacity: 0, y: 28 },
   whileInView: { opacity: 1, y: 0 },
@@ -22,6 +27,7 @@ export default function App() {
       <div className="pointer-events-none fixed inset-0 z-[1] aida-grid" aria-hidden />
       <NeedleThreadCursor />
       <div className="relative z-10">
+        {/* Hero: name + about paragraphs from projectData.heroAbout */}
         <section
           className="flex min-h-screen flex-col items-center justify-center px-6 py-16 text-center"
           aria-label="Introduction"
@@ -46,6 +52,7 @@ export default function App() {
           </motion.div>
         </section>
 
+        {/* Projects: intro line + stitched titles (open modal on click) */}
         <section className="border-t border-white/10 px-6 pb-32 pt-8" aria-label="Projects">
           <motion.div className="mx-auto max-w-3xl">
             <motion.p
@@ -76,6 +83,7 @@ export default function App() {
 
       <div className="crt-overlay pointer-events-none fixed inset-0 z-[20]" aria-hidden />
 
+      {/* Full-screen case study overlay; null project = closed */}
       <ProjectModal project={activeProject} onClose={closeModal} />
     </div>
   )

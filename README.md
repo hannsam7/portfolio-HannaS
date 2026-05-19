@@ -1,44 +1,127 @@
 # portfolio-HannaS
-My personal portfolio to showcase projects through out my studies at NTNU
 
-# Portfolio
+Personal portfolio for **Hanna Samborska** — projects from NTNU studies and client work. A minimal, fabric-and-thread themed site built with React and Vite.
 
-Vinyl record player portfolio site. Built with vanilla JS + Vite.
+**Live site:** configure GitHub Pages (see [Deploy](#deploy-to-github-pages)) or run locally.
+
+---
+
+## Tech stack
+
+| Layer | Tools |
+|--------|--------|
+| UI | React 19, Framer Motion |
+| Styling | Tailwind CSS 3 |
+| Build | Vite 5 |
+| Deploy | `gh-pages` (static build) |
+
+---
 
 ## Getting started
 
+All commands run from the `portfolio/` folder:
+
 ```bash
+cd portfolio
 npm install
-npm run dev        # localhost:5173
+npm run dev
 ```
 
-## Editing your content
+Open [http://localhost:5173](http://localhost:5173).
 
-Everything you need to update lives in one file:
+Other scripts:
+
+```bash
+npm run build    # production build → dist/
+npm run preview  # serve dist/ locally
+npm run deploy   # build + push to gh-pages branch
+```
+
+---
+
+## Project structure
 
 ```
-src/data/projects.js
+portfolio-HannaS/
+├── README.md                 # this file
+└── portfolio/                # Vite app root
+    ├── public/
+    │   └── images/projects/  # project screenshots
+    ├── src/
+    │   ├── App.jsx           # page layout: hero, project list, modal
+    │   ├── data/
+    │   │   └── projectData.js   # ← edit copy, projects, contact here
+    │   ├── components/       # UI pieces (modal, footer, cursor, frames)
+    │   ├── hooks/            # scroll tension for stitched titles
+    │   └── index.css         # global styles, animations, CRT overlay
+    ├── vite.config.js
+    └── package.json
 ```
 
-- Add/remove projects by editing the `projects` array
-- Update bio, skills, and contact info in the `about` object
-- Swap your photo by setting `about.photo` to an image path in `/public/`
+---
 
-## Deploying to GitHub Pages
+## Editing content
 
-1. Set `base` in `vite.config.js` to match your repo name:
+**Most changes only require** `portfolio/src/data/projectData.js`:
+
+| Export | Purpose |
+|--------|---------|
+| `heroAbout` | About paragraphs on the home section (array of strings) |
+| `projectsIntro` | Short text above the project list |
+| `projectData` | All projects: titles, descriptions, tags, images, links |
+| `footerContact` | Name, email, GitHub / LinkedIn |
+
+### Adding or updating a project
+
+Each item in `projectData` supports:
+
+- `id` — unique key (used in URLs/keys)
+- `title`, `subtitle` — shown in list and modal
+- `description` — array of paragraphs in the modal
+- `tags` — technology labels
+- `images` — paths under `public/`, e.g. `['/images/projects/my-shot.png']`
+- `video` — optional `{ src, poster }` or `null`
+- `links` — `{ label, href }`; empty `href` or `#` hides the link
+- `detail` — optional `role`, `timeline`, `outcomes[]`
+
+Put screenshots in `portfolio/public/images/projects/`.
+
+### Contact & links
+
+Update `footerContact.email` and `socials` in the same file. The footer shows a mirrored embroidered name plus mailto and social links.
+
+---
+
+## Deploy to GitHub Pages
+
+1. In `portfolio/vite.config.js`, set `base` to your repo path if needed:
    ```js
-   base: '/your-repo-name/'
+   base: '/portfolio-HannaS/'   // or './' for user/org root sites
    ```
-2. Run:
+   Current default: `base: './'` (works for many `gh-pages` setups).
+
+2. From `portfolio/`:
    ```bash
    npm run deploy
    ```
-3. In your GitHub repo → Settings → Pages → set source to `gh-pages` branch.
 
-Your site will be live at `https://yourusername.github.io/your-repo-name/`
+3. On GitHub: **Settings → Pages →** source branch **`gh-pages`**, folder **`/` (root)**.
 
-## Self-hosting fonts
+Site URL (example): `https://<username>.github.io/portfolio-HannaS/`
 
-See `public/fonts/README.md` for instructions on removing the
-Google Fonts dependency.
+---
+
+## Design notes
+
+- **Stitched titles** — per-letter reveal on scroll; opens project modal on click.
+- **Frayed frames** — decorative thread border around images; threads react to cursor proximity.
+- **Needle cursor** — custom cursor + thread trail (disabled when `prefers-reduced-motion` is on).
+- **Messy backside footer** — mirrored name with SVG “stitch” paths and hand-tagged contact links.
+
+Fonts: display face `Home Sweet Home` (bundled in `src/assets/fonts/`), body `Inter` via CSS.
+
+---
+
+## License
+
+Personal portfolio — © Hanna Samborska. Project code in this repo is for portfolio use unless otherwise noted.

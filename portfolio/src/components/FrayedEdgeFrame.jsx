@@ -1,3 +1,8 @@
+/**
+ * Decorative frame with procedural “loose thread” edges.
+ * Threads bend slightly when the cursor is near (mousemove + rAF).
+ * `seed` keeps thread layout stable per instance; `variant="fullscreen"` for modals.
+ */
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 const SHADES = ['#FFFFFF', '#F5F5F5', '#E0E0E0']

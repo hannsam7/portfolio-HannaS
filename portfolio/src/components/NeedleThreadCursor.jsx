@@ -1,3 +1,8 @@
+/**
+ * Custom needle + red thread cursor with motion trail on canvas.
+ * Highlights interactive elements (`data-thread-interactive`).
+ * Disabled entirely when prefers-reduced-motion is set.
+ */
 import { useEffect, useRef, useState, useCallback, useId } from 'react'
 
 const TRAIL_MS = 1500

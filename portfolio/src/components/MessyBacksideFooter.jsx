@@ -1,3 +1,7 @@
+/**
+ * Site footer: frayed top edge, mirrored embroidered name, contact links,
+ * and the woven “Designed & Hand-Stitched” label (BrandLabelFooter).
+ */
 import { useMemo } from 'react'
 import { footerContact } from '../data/projectData'
 import { BrandLabelFooter } from './BrandLabelFooter'
@@ -37,6 +41,7 @@ function FrayedFabricEdge() {
   )
 }
 
+/** SVG stitch paths between character positions for the mirrored name. */
 function buildThreadLayout(text) {
   const chars = [...text]
   const n = chars.length

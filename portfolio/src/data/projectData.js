@@ -1,13 +1,36 @@
-/** About section — one string per paragraph. */
+/**
+ * Central content config — edit this file to update the site without touching components.
+ *
+ * @see README.md in the repo root for full field documentation.
+ *
+ * Media paths are relative to `public/` (e.g. `/images/projects/foo.png`).
+ * Links with empty `href` or `href: '#'` are hidden in the project modal.
+ */
+
+/** About section on the hero — one string per paragraph. */
 export const heroAbout = [
   "I'm Hanna — full stack developer, 22, originally from Poland and now calling Norway home. I got into tech because I wanted to build things that actually matter. My bachelor's thesis is a real-time dashboard for emergency medical dispatchers, which says a lot about the kind of work that gets me out of bed.",
   "I'm drawn to systems where the stakes are real and the users aren't just \"users\" — they're people depending on the product to do its job.",
 ]
 
-/** Shown above the project list — introduces the work below. */
+/** Intro copy displayed above the scrollable project list. */
 export const projectsIntro =
   'Selected projects from my studies and practice — including my bachelor thesis (a live dispatch dashboard), a narrative web experience, coursework, and client work. Click a title to view screenshots, technologies, and links.'
 
+/**
+ * Projects shown on the main page. Clicking a title opens ProjectModal with full detail.
+ *
+ * @typedef {Object} Project
+ * @property {string} id
+ * @property {string} title
+ * @property {string} subtitle
+ * @property {string[]} description
+ * @property {string[]} tags
+ * @property {string[]} images
+ * @property {{ src: string, poster?: string } | null} video
+ * @property {{ label: string, href: string }[]} links
+ * @property {{ role?: string, timeline?: string, outcomes?: string[] }} [detail]
+ */
 export const projectData = [
   {
     id: 'life-below-water',
@@ -102,7 +125,7 @@ export const projectData = [
   },
 ]
 
-/** Footer contact */
+/** Footer: mirrored name block, email (mailto), and social links. */
 export const footerContact = {
   displayName: 'Hanna Samborska',
   email: 'hannasamb@gmail.com',

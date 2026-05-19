@@ -1,3 +1,7 @@
+/**
+ * Global styles: Tailwind layers, display font, needle cursor, frayed frames,
+ * footer embroidery, and CRT overlay. Component-specific logic lives in JSX.
+ */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

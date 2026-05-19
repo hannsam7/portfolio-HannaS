@@ -1,7 +1,13 @@
+/**
+ * Full-screen project detail overlay.
+ * Renders images/video, copy, tags, and external links from projectData.
+ * Closes on Escape or ×; locks body scroll while open.
+ */
 import { useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FrayedEdgeFrame } from './FrayedEdgeFrame'
 
+/** Omit placeholder links so empty or `#` hrefs never render. */
 function filterLinks(links) {
   if (!links?.length) return []
   return links.filter((l) => l.href && l.href !== '#')
