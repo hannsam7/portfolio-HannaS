@@ -79,10 +79,15 @@ export function ProjectModal({ project, onClose }) {
               ) : null}
 
               {project.images?.length > 0 && (
-                <div className="mt-10 flex flex-col gap-8">
+                <div className="mt-10 flex flex-col items-center gap-6">
                   {project.images.map((src) => (
-                    <FrayedEdgeFrame key={src} seed={`${project.id}-img-${src}`} className="w-full" threadsPerSide={6}>
-                      <img src={src} alt="" className="block w-full object-cover" loading="lazy" />
+                    <FrayedEdgeFrame
+                      key={src}
+                      seed={`${project.id}-img-${src}`}
+                      className="w-full max-w-md md:max-w-lg"
+                      threadsPerSide={6}
+                    >
+                      <img src={src} alt="" className="block w-full object-contain" loading="lazy" />
                     </FrayedEdgeFrame>
                   ))}
                 </div>

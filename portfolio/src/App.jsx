@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react'
 import { motion } from 'framer-motion'
-import { heroAbout, projectData } from './data/projectData'
+import { heroAbout, projectData, projectsIntro } from './data/projectData'
 import { ProjectModal } from './components/ProjectModal'
 import { StitchedProjectTitle } from './components/StitchedProjectTitle'
 import { MessyBacksideFooter } from './components/MessyBacksideFooter'
@@ -34,18 +34,26 @@ export default function App() {
           >
             Hanna Samborska
           </motion.h1>
-          <motion.p
-            className="mt-10 max-w-xl font-sans text-base leading-relaxed text-thread md:text-lg"
+          <motion.div
+            className="mt-10 max-w-2xl space-y-5 font-sans text-base leading-relaxed text-thread md:text-lg"
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
           >
-            {heroAbout}
-          </motion.p>
+            {heroAbout.map((paragraph, i) => (
+              <p key={i}>{paragraph}</p>
+            ))}
+          </motion.div>
         </section>
 
         <section className="border-t border-white/10 px-6 pb-32 pt-8" aria-label="Projects">
-          <div className="mx-auto max-w-3xl">
+          <motion.div className="mx-auto max-w-3xl">
+            <motion.p
+              className="max-w-xl pb-12 font-sans text-sm leading-relaxed text-white/75 md:pb-16 md:text-base"
+              {...sectionReveal}
+            >
+              {projectsIntro}
+            </motion.p>
             {projectData.map((project) => (
               <motion.article
                 key={project.id}
@@ -60,7 +68,7 @@ export default function App() {
                 <p className="mt-4 max-w-xl font-sans text-sm text-white/75 md:text-base">{project.subtitle}</p>
               </motion.article>
             ))}
-          </div>
+          </motion.div>
         </section>
 
         <MessyBacksideFooter />

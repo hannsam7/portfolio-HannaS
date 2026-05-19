@@ -1,121 +1,113 @@
-/**
- * Edit this file to update copy, media, and links without touching components.
- *
- * Media:
- * - `images`: paths under `public/` e.g. `['/images/hero.jpg']`
- * - `video`: `{ src: '/videos/clip.mp4', poster: '/images/poster.jpg' }` or `null`
- *
- * Links with empty `href` or `href: '#'` are hidden until you set real URLs.
- *
- * Footer: see `footerContact` for mirrored-name block + contact links.
- */
+/** About section — one string per paragraph. */
+export const heroAbout = [
+  "I'm Hanna — full stack developer, 22, originally from Poland and now calling Norway home. I got into tech because I wanted to build things that actually matter. My bachelor's thesis is a real-time dashboard for emergency medical dispatchers, which says a lot about the kind of work that gets me out of bed.",
+  "I'm drawn to systems where the stakes are real and the users aren't just \"users\" — they're people depending on the product to do its job.",
+]
 
-export const heroAbout =
-  "I'm a designer and developer focused on clear interaction, readable systems, and work that sits at the intersection of research and buildable prototypes. This site is intentionally minimal—like a blank canvas with stitched type."
+/** Shown above the project list — introduces the work below. */
+export const projectsIntro =
+  'Selected projects from my studies and practice — including my bachelor thesis (a live dispatch dashboard), a narrative web experience, coursework, and client work. Click a title to view screenshots, technologies, and links.'
 
 export const projectData = [
   {
-    id: 'bachelor-oppgave',
-    title: 'Bachelor oppgave',
-    subtitle: 'Bachelor thesis — interaction & UX',
+    id: 'life-below-water',
+    title: 'Life Below Water',
+    subtitle: 'Narrative scroll experience (UN SDG 14)',
     description: [
-      'Final bachelor project exploring how thoughtful interaction design and visual systems can support a clear narrative from research to prototype.',
-      'The project combined qualitative methods, concept development, and iterative prototyping to deliver a coherent product concept with a strong design rationale.',
+      'An immersive, single-page story about coral reef loss, told through scroll-driven sections, atmospheric visuals, and restrained typography.',
+      'Built to communicate research and urgency without overwhelming the reader — pairing editorial design with lightweight front-end motion.',
     ],
-    tags: ['Bachelor', 'UX / UI', 'Prototyping'],
-    images: [],
+    tags: ['HTML', 'CSS', 'JavaScript', 'Scroll storytelling', 'UX / UI'],
+    images: ['/images/projects/life-below-water.png'],
     video: null,
-    links: [
-      { label: 'Live', href: '#' },
-      { label: 'GitHub', href: '' },
-    ],
+    links: [{ label: 'GitHub', href: 'https://github.com/idg1293-2026/final-oblig-hannsam7' }],
     detail: {
-      role: 'Solo project — research, concept, UX/UI design, prototyping',
-      timeline: 'One semester',
+      role: 'Solo project — research, concept, UX/UI design, front-end build',
+      timeline: 'Course project',
       outcomes: [
-        'Structured research report',
-        'Concept and user flows',
-        'Interactive prototype',
-        'Written reflection and documentation',
+        'Research-led narrative structure',
+        'Responsive scroll experience',
+        'Documented design rationale',
       ],
     },
   },
   {
-    id: 'web-of-things',
-    title: 'Web of things',
-    subtitle: 'Connected objects on the web',
+    id: 'emergency-dashboard',
+    title: 'Live Dashboard',
+    subtitle: "Bachelor's thesis — real-time analytics for 113 dispatch",
     description: [
-      'Concepts and prototypes for how everyday objects expose data and behaviour through web technologies, focusing on simple, tangible interfaces.',
-      'The work included concept sketches, technical exploration, and small prototypes to test ideas around visibility and control of IoT from the browser.',
+      'My bachelor thesis: a live control-room dashboard for emergency medical dispatch, aggregating call response times, regional load, forecasts, and infrastructure alerts.',
+      'Designed for at-a-glance situational awareness with high-contrast charts and live-updating panels — built for operators who need the system to work when it counts.',
     ],
-    tags: ['IoT', 'Web', 'Prototyping'],
-    images: [],
+    tags: ['React', 'D3.js', 'WebSocket', 'Node.js', 'SARIMAX forecasting'],
+    images: ['/images/projects/emergency-dashboard.png'],
     video: null,
-    links: [
-      { label: 'Live', href: '#' },
-      { label: 'GitHub', href: '' },
-    ],
+    links: [{ label: 'GitHub', href: 'https://github.com/norsto/amk-dashboard' }],
     detail: {
-      role: 'Concept development, prototyping, technical exploration',
-      timeline: 'Course / project period',
-      outcomes: ['Concept documentation', 'Web-based demos', 'Technical proof-of-concepts'],
+      role: 'Full stack — research, backend integration, data visualisation, front-end build',
+      timeline: "Bachelor's thesis — one semester",
+      outcomes: [
+        'Response-time and queue visualisations',
+        'Forecast chart with confidence interval',
+        'Alert panel for infrastructure status',
+      ],
     },
   },
   {
-    id: 'programmering-2',
-    title: 'Programmering 2 oblig 5',
-    subtitle: 'Frontend development coursework',
+    id: 'stock-simulator',
+    title: 'Stock Market Simulator',
+    subtitle: 'Educational stock market game',
     description: [
-      'Course assignment focused on structuring a small frontend application, with emphasis on clean JavaScript, components, and maintainable styling.',
-      'The assignment emphasised readable JavaScript, sensible state handling, and a UI that was both functional and easy to extend for future tasks.',
+      'A desktop-style trading simulator where players track portfolio value, browse listed stocks, and study price history before buying or selling.',
+      'Focused on clear tab navigation, searchable market tables, and an inline chart for the selected symbol.',
     ],
-    tags: ['JavaScript', 'Frontend', 'Coursework'],
-    images: [],
+    tags: ['Java', 'JavaFX', 'Charting', 'Desktop UI'],
+    images: ['/images/projects/stock-simulator.png'],
     video: null,
-    links: [
-      { label: 'Live', href: '#' },
-      { label: 'GitHub', href: '' },
-    ],
+    links: [{ label: 'GitHub', href: 'https://github.com/NTNU-IE-IDI-IDATG/mappe-2026-millions-gruppe-19' }],
     detail: {
-      role: 'Solo — full implementation',
-      timeline: 'Assignment period',
-      outcomes: ['Modular JS structure', 'Component-based UI', 'Responsive layout', 'Documented code'],
+      role: 'Solo — application logic, UI, and data modelling',
+      timeline: 'Course assignment',
+      outcomes: [
+        'Market, portfolio, and transaction views',
+        'Searchable stock table with live selection',
+        'Price chart with high/low summary',
+        'Persistent player progress',
+      ],
     },
   },
   {
     id: 'gbs-nettside',
-    title: 'GBS nettside',
-    subtitle: 'Website for GBS',
+    title: 'Company website',
+    subtitle: 'Gjøvik ByggService AS',
     description: [
-      'Design and implementation of a small website for GBS, focusing on clear information architecture, responsive layout, and approachable visuals.',
-      'From content structure and wireframes through to implementation, the goal was a small but professional site that is easy to update and maintain.',
+      'Design and implementation of a professional contractor website with a dark palette, gold accents, and a hero that highlights services and team presence.',
+      'Structured for clear navigation, responsive layout, and straightforward paths to projects and contact.',
+      'Booking and contact forms with minimal user input for injection prevention and spam messages.',
     ],
-    tags: ['Web Design', 'Development', 'Client work'],
-    images: [],
+    tags: ['HTML', 'CSS', 'JavaScript', 'Responsive design', 'Client work'],
+    images: ['/images/projects/gbs-website.png'],
     video: null,
-    links: [
-      { label: 'Live', href: '#' },
-      { label: 'GitHub', href: '' },
-    ],
+    links: [{ label: 'Website link', href: 'https://gjovik-byggservice.no' }],
     detail: {
       role: 'Design and development',
       timeline: 'Project-based',
       outcomes: [
         'Information architecture',
-        'Visual design',
-        'Responsive site',
+        'Visual design system',
+        'Responsive marketing site',
         'Handover and documentation',
       ],
     },
   },
 ]
 
-/** Footer contact — edit labels and URLs here. */
+/** Footer contact */
 export const footerContact = {
   displayName: 'Hanna Samborska',
-  email: 'hello@example.com',
+  email: 'hannasamb@gmail.com',
   socials: [
-    { label: 'GitHub', href: 'https://github.com/hannasamborska' },
-    { label: 'LinkedIn', href: 'https://linkedin.com/in/hannasamborska' },
+    { label: 'GitHub', href: 'https://github.com/hannsam7' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/hannasamborska/' },
   ],
 }
